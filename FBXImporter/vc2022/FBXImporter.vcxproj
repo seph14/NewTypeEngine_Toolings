@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A31C5E2-9B4D-4E8F-A6C1-2FD83B9E0411}</ProjectGuid>
+    <RootNamespace>FBXImporter</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <VCProjectVersion>17.0</VCProjectVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <CinderRoot>C:\Users\barca\Projects\Cinder</CinderRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+
+  <!-- meshoptimizer third-party sources -->
+  <ItemGroup>
+    <ClCompile Include="..\third_party\meshoptimizer\allocator.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\clusterizer.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\indexanalyzer.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\indexcodec.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\indexgenerator.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\meshletcodec.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\meshletutils.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\opacitymap.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\overdrawoptimizer.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\partition.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\quantization.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\rasterizer.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\remesher.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\simplifier.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\spatialorder.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\stripifier.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\tangentspace.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\vcacheoptimizer.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\vertexcodec.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\vertexfilter.cpp" />
+    <ClCompile Include="..\third_party\meshoptimizer\vfetchoptimizer.cpp" />
+  </ItemGroup>
+  <!-- ufbx third-party -->
+  <ItemGroup>
+    <ClCompile Include="..\third_party\ufbx\ufbx.c" />
+    <ClInclude Include="..\third_party\ufbx\ufbx.h" />
+    <ClInclude Include="..\third_party\meshoptimizer\meshoptimizer.h" />
+  </ItemGroup>
+  <!-- tool sources -->
+  <ItemGroup>
+    <ClCompile Include="..\src\FBXImporterApp.cpp" />
+    <ClCompile Include="..\src\FbxImporter.cpp" />
+    <ClCompile Include="..\src\MaterialMapper.cpp" />
+    <ClCompile Include="..\src\GeometryProcessor.cpp" />
+    <ClCompile Include="..\src\MeshOptimize.cpp" />
+    <ClCompile Include="..\src\OutputWriter.cpp" />
+    <ClCompile Include="..\src\ConvertPipeline.cpp" />
+    <ClInclude Include="..\src\FbxImporter.h" />
+    <ClInclude Include="..\src\MaterialMapper.h" />
+    <ClInclude Include="..\src\GeometryProcessor.h" />
+    <ClInclude Include="..\src\MeshOptimize.h" />
+    <ClInclude Include="..\src\OutputWriter.h" />
+    <ClInclude Include="..\src\ConvertPipeline.h" />
+  </ItemGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\src;..\third_party\ufbx;..\third_party\meshoptimizer;$(CinderRoot)\include;$(CinderRoot)\include\ANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CinderRoot)\lib\msw\x64\Debug_MD\v143;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <!-- Cinder's CINDER_APP_MSW provides WinMain; use its CRT entry while
+           keeping the console subsystem (CLI exit codes + attached console). -->
+      <EntryPointSymbol>WinMainCRTStartup</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\src;..\third_party\ufbx;..\third_party\meshoptimizer;$(CinderRoot)\include;$(CinderRoot)\include\ANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CinderRoot)\lib\msw\x64\Release_MD\v143;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol>WinMainCRTStartup</EntryPointSymbol>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
