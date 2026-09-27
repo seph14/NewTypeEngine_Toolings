@@ -5,3 +5,8 @@
 /VATExporter/assets
 /VATExporter/vc2019/.vs
 /VATExporter/vc2019/x64
+/TetCage/assets
+/TetCage/*.exe
+/TetCage/vc2022/.vs
+/TetCage/vc2022/x64
+/TetCage/vc2022/tet_cage_gui/
